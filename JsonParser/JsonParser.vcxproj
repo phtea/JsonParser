@@ -25,6 +25,7 @@
     <ClInclude Include="include\json\value.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\token.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\parser.cpp" />
     <ClCompile Include="src\tokenizer.cpp" />

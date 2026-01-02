@@ -9,6 +9,8 @@ namespace json {
 	public:
 		explicit Tokenizer(std::string_view input);
 
+		bool pos_at_end() const;
+
 		Token next();		  // consume and return
 		const Token& peek();  // lookahead
 
