@@ -24,6 +24,9 @@
     <ClInclude Include="include\json\parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\json\tokenizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\value.cpp">

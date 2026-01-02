@@ -1,29 +1,25 @@
 #pragma once
-
-#include <vector>
-#include <unordered_map>
-#include <string>
-#include <variant>
+#include <string_view>
 
 namespace json {
-
-struct Null {};
-struct Value;
-
-using Array = std::vector<Value>;
-using Object = std::unordered_map<std::string, Value>;
-
-struct  Value {
-	using Variant = std::variant<
+	enum class TokenType {
+		LBrace,
+		RBrace,
+		LBracket,
+		RBracket,
+		Colon,
+		Comma,
+		String,
+		Number,
+		True,
+		False,
 		Null,
-		bool,
-		double,
-		std::string,
-		Array,
-		Object
-	>;
+		End
+	};
 
-	Variant data;
+
+	struct Token {
+		TokenType type;
+		std::string_view lexeme;  // todo: value later
+	};
 };
-
-}

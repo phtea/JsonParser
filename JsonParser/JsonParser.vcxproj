@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\json\parser.h" />
     <ClInclude Include="include\json\token.h" />
+    <ClInclude Include="include\json\tokenizer.h" />
     <ClInclude Include="include\json\value.h" />
   </ItemGroup>
   <ItemGroup>
