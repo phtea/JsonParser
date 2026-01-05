@@ -2,6 +2,7 @@
 #include <iostream>
 #include <assert.h>
 #include "json/value.h"
+#include "json/pretty_print.h"
 
 void test_1() {
 	json::Tokenizer t("{[ ]  }");
@@ -82,6 +83,13 @@ void test_6() {
 	assert(std::get<double>(v2.data) == 2);
 }
 
+void test_7() {
+	json::Parser p(R"({"a":[1,true,null],"b":{"c":"x"}})");
+	json::Value v = p.parse();
+
+	std::cout << json::pretty_print(v) << "\n";
+}
+
 int main() {
 	test_1();
 	test_2();
@@ -89,4 +97,5 @@ int main() {
 	test_4();
 	test_5();
 	test_6();
+	test_7();
 }
