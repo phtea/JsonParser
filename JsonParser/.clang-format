@@ -8,6 +8,7 @@
 
 AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
+AllowShortCaseLabelsOnASingleLine: true
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
 BasedOnStyle: Google

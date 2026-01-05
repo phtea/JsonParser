@@ -11,7 +11,14 @@ namespace json {
 
 		Value parse();
 
+		Value parse_value();
+		Value parse_object();
+		Value parse_array();
+
 	private:
 		Tokenizer tokenizer_;
+
+		void consume(TokenType expected);
+		bool match(TokenType type);
 	};
 }
