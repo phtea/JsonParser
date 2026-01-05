@@ -65,10 +65,28 @@ void test_5() {
 	assert(std::get<double>(a[2].data) == -2);
 }
 
+void test_6() {
+	json::Parser p(R"([{"key1": "value1"}, {"key2": 2}])");
+	auto v = p.parse();
+
+	using json::Array;
+	const Array& a = std::get<Array>(v.data);
+
+	auto o1 = std::get<json::Object>(a[0].data);
+	auto o2 = std::get<json::Object>(a[1].data);
+
+	auto v1 = o1.at("key1"); //.data? idk yet
+	auto v2 = o2.at("key2");
+
+	assert(std::get<std::string>(v1.data) == "value1");
+	assert(std::get<double>(v2.data) == 2);
+}
+
 int main() {
 	test_1();
 	test_2();
 	test_3();
 	test_4();
 	test_5();
+	test_6();
 }
