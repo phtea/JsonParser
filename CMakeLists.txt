@@ -22,6 +22,13 @@ target_include_directories(json_parser
         ${PROJECT_SOURCE_DIR}/include
 )
 
+find_program(CLANG_TIDY_EXE NAMES clang-tidy)
+if (CLANG_TIDY_EXE)
+	set_target_properties(json_parser PROPERTIES
+		CXX_CLANG_TIDY ${CLANG_TIDY_EXE}
+	)
+endif()
+
 add_executable(json_parser_app
     main.cpp
 )
