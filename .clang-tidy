@@ -1,0 +1,111 @@
+# .clang-tidy
+# Stricter configuration aligned with Google C++ Style Guide
+
+Checks: >
+  -*,
+
+  # Core correctness & safety
+  bugprone-*,
+  clang-analyzer-*,
+  concurrency-*,
+
+  # Modern C++
+  modernize-*,
+
+  # Performance
+  performance-*,
+
+  # Portability
+  portability-*,
+
+  # Readability & style
+  readability-*,
+
+  # C++ Core Guidelines (filtered)
+  cppcoreguidelines-*,
+
+  # === Explicitly disabled noisy / low-value checks ===
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-special-member-functions,
+  -readability-magic-numbers,
+  -readability-implicit-bool-conversion,
+  -modernize-use-trailing-return-type
+
+WarningsAsErrors: '*'                 # Can be set to '*' in CI later
+HeaderFilterRegex: '.*'              # Analyze all project headers
+FormatStyle: file                    # Use .clang-format for fixes
+
+CheckOptions:
+  # === Google-style identifier naming ===
+
+  # Namespaces: snake_case
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+
+  # Types: PascalCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.UnionCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypeAliasCase
+    value: CamelCase
+
+  # Functions & methods: camelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+
+  # Variables: snake_case
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.ParameterCase
+    value: lower_case
+
+  # Class members: snake_case_
+  - key: readability-identifier-naming.MemberCase
+    value: lower_case
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: _
+
+  # Constants: kConstantName
+  - key: readability-identifier-naming.ConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantPrefix
+    value: k
+
+  # Macros: UPPER_CASE
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+
+  # Enums values: CamelCase (Google style)
+  - key: readability-identifier-naming.EnumConstantCase
+    value: CamelCase
+
+  # === Modern C++ rules ===
+  - key: modernize-use-nullptr.NullMacros
+    value: 'NULL'
+
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+
+  - key: modernize-avoid-c-arrays.AllowStringArrays
+    value: 'true'
+
+  # === Readability ===
+  - key: readability-function-cognitive-complexity.Threshold
+    value: '20'   # Slightly stricter than before
+
+  - key: readability-identifier-length.MinimumVariableNameLength
+    value: '2'
+
+  # === Performance ===
+  - key: performance-move-const-arg.CheckTriviallyCopyable
+    value: 'true'
