@@ -8,18 +8,12 @@ The parser converts JSON text into a strongly typed in-memory representation tha
 
 ## Build
 
-This project is built using a Visual Studio solution.
+This project is built using CMake.
 
-### Requirements
-- Windows
-- Visual Studio 2022 (or newer)
-- C++17 or newer
-
-### Steps
-1. Open `JsonParser.slnx` in Visual Studio
-2. Select the desired build configuration (`Debug` or `Release`)
-3. Build the solution (`Ctrl + Shift + B`)
-4. Run the project (`F5` or `Ctrl + F5`)
+```bash
+cmake -S . -B build # do this first time for configuring
+cmake --build build # each time you need to build
+```
 
 ---
 
